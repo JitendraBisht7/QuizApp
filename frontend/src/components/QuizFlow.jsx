@@ -35,7 +35,8 @@ export default function QuizFlow() {
     }
 
     // Fresh fetch
-    fetch(`http://localhost:5000/api/questions?count=${QUESTIONS_COUNT}`)
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    fetch(`${API_URL}/api/questions?count=${QUESTIONS_COUNT}`)
       .then(res => res.json())
       .then(data => {
         setQuestions(data);

@@ -65,7 +65,8 @@ export default function LeaderboardScreen() {
   const fetchLeaderboard = () => {
     setLoading(true);
     setError(false);
-    fetch('http://localhost:5000/api/leaderboard')
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    fetch(`${API_URL}/api/leaderboard`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => { setError(true); setLoading(false); });

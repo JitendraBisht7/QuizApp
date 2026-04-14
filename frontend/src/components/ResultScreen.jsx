@@ -53,7 +53,8 @@ export default function ResultScreen() {
 
     console.log('[ResultScreen] Saving score to DB:', payload);
 
-    fetch('http://localhost:5000/api/scores', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    fetch(`${API_URL}/api/scores`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(payload),
